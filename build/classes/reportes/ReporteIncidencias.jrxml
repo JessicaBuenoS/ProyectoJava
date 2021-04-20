@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteIncidencias" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b2d954e1-1ac1-46a7-812d-e51800238dd3">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="New Dataset 1" uuid="542d219e-a7ca-46de-b507-870694a349f4">
+		<queryString language="SQL">
+			<![CDATA[SELECT
+     incidencias.`id_incidencia` AS incidencias_id_incidencia,
+     incidencias.`nombre_cliente` AS incidencias_nombre_cliente,
+     incidencias.`direccion_cliente` AS incidencias_direccion_cliente,
+     incidencias.`edad_cliente` AS incidencias_edad_cliente,
+     incidencias.`telefono_cliente` AS incidencias_telefono_cliente,
+     incidencias.`descripcion_cliente` AS incidencias_descripcion_cliente,
+     incidencias.`id_gestor` AS incidencias_id_gestor,
+     incidencias.`fecha` AS incidencias_fecha,
+     tipo_estado.`descripcion` AS tipo_estado_descripcion,
+     tipo_incidencia.`descripcion` AS tipo_incidencia_descripcion
+FROM
+     `incidencias` incidencias INNER JOIN `tipo_incidencia` tipo_incidencia ON incidencias.`id_tipo_incidencia` = tipo_incidencia.`id_tipo_incidencia`
+     INNER JOIN `tipo_estado` tipo_estado ON incidencias.`id_tipo_estado` = tipo_estado.`id_tipo_estado`]]>
+		</queryString>
+		<field name="incidencias_id_incidencia" class="java.lang.Integer"/>
+		<field name="incidencias_nombre_cliente" class="java.lang.String"/>
+		<field name="incidencias_direccion_cliente" class="java.lang.String"/>
+		<field name="incidencias_edad_cliente" class="java.lang.Integer"/>
+		<field name="incidencias_telefono_cliente" class="java.lang.String"/>
+		<field name="incidencias_descripcion_cliente" class="java.lang.String"/>
+		<field name="incidencias_id_gestor" class="java.lang.String"/>
+		<field name="incidencias_fecha" class="java.sql.Timestamp"/>
+		<field name="tipo_estado_descripcion" class="java.lang.String"/>
+		<field name="tipo_incidencia_descripcion" class="java.lang.String"/>
+		<group name="incidencias_id_incidencia">
+			<groupExpression><![CDATA[$F{incidencias_id_incidencia}]]></groupExpression>
+		</group>
+	</subDataset>
+	<queryString>
+		<![CDATA[SELECT
+     incidencias.`id_incidencia` AS incidencias_id_incidencia,
+     incidencias.`nombre_cliente` AS incidencias_nombre_cliente,
+     incidencias.`direccion_cliente` AS incidencias_direccion_cliente,
+     incidencias.`edad_cliente` AS incidencias_edad_cliente,
+     incidencias.`telefono_cliente` AS incidencias_telefono_cliente,
+     incidencias.`descripcion_cliente` AS incidencias_descripcion_cliente,
+     incidencias.`id_gestor` AS incidencias_id_gestor,
+     incidencias.`fecha` AS incidencias_fecha,
+     tipo_estado.`descripcion` AS tipo_estado_descripcion,
+     tipo_incidencia.`descripcion` AS tipo_incidencia_descripcion
+FROM
+     `incidencias` incidencias INNER JOIN `tipo_incidencia` tipo_incidencia ON incidencias.`id_tipo_incidencia` = tipo_incidencia.`id_tipo_incidencia`
+     INNER JOIN `tipo_estado` tipo_estado ON incidencias.`id_tipo_estado` = tipo_estado.`id_tipo_estado`]]>
+	</queryString>
+	<field name="incidencias_id_incidencia" class="java.lang.Integer"/>
+	<field name="incidencias_nombre_cliente" class="java.lang.String"/>
+	<field name="incidencias_direccion_cliente" class="java.lang.String"/>
+	<field name="incidencias_edad_cliente" class="java.lang.Integer"/>
+	<field name="incidencias_telefono_cliente" class="java.lang.String"/>
+	<field name="incidencias_descripcion_cliente" class="java.lang.String"/>
+	<field name="incidencias_id_gestor" class="java.lang.String"/>
+	<field name="incidencias_fecha" class="java.sql.Timestamp"/>
+	<field name="tipo_estado_descripcion" class="java.lang.String"/>
+	<field name="tipo_incidencia_descripcion" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement x="227" y="23" width="147" height="18" uuid="4f01e8d7-d33f-4a6d-88b2-496bcc99ab0e"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<text><![CDATA[Reporte de Incidencias]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="38" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="10" height="20" uuid="23a38797-1c7e-441d-ac01-e6d137321e6e"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="10" y="0" width="100" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="afa9c0ec-2ed4-49c7-af7e-d29d1bee27fe"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Nombre Cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="110" y="0" width="100" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="e6f0f2f8-c853-457f-8fb3-1191205659a3"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Dirección]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="210" y="0" width="31" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="7ac5ccf0-2007-461c-96a2-ee5ab16f115a"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Edad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="241" y="0" width="50" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="aafd0c14-7af0-4ad1-bbbe-986dca95f7b6"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Teléfono]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="291" y="0" width="100" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="acd8dc8f-5548-404e-99a9-4fadf055b00b"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Descripción]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="391" y="0" width="34" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="50321eb8-2723-471c-b521-2358378ca5dd"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Gestor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="425" y="0" width="61" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="78edd9be-843f-403d-a61a-f96f3e6251dd"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="486" y="0" width="36" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="2ab2ef17-1e99-4527-adeb-91b59ad1577f"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Estado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="522" y="0" width="50" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="cc894ee7-5bcb-402f-bf85-0bc6538a751d"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Tipo]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="65" splitType="Stretch">
+			<textField>
+				<reportElement mode="Transparent" x="0" y="0" width="10" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="9e8716fc-9904-4986-a0b6-5dcc4e63a9db"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{incidencias_id_incidencia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="10" y="0" width="100" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="77214f77-b4ee-4158-9c9d-9f5eb2b179b4"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{incidencias_nombre_cliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="110" y="0" width="100" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="3de7d9ad-a057-4312-8c63-aeec64305b1c"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{incidencias_direccion_cliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="210" y="0" width="31" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="68689391-ef05-4dd5-850c-2c13794c948f"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{incidencias_edad_cliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="241" y="0" width="50" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="5facb4f3-3e15-4ecf-af3d-c901984a44e8"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{incidencias_telefono_cliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="291" y="0" width="100" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="0933a945-48d4-4d62-b592-8202b21fe275"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{incidencias_descripcion_cliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="391" y="0" width="34" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="338c4ece-dc3f-406b-9fd2-174c8e407d4e"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{incidencias_id_gestor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="425" y="0" width="61" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="04f282c0-c362-4402-a12e-a6c1d2c814b0"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{incidencias_fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="486" y="0" width="36" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="1a8fb614-094f-4d45-9b48-da169dd2e63c"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tipo_estado_descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="522" y="0" width="50" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="20ecfe65-fe65-4509-94d0-332dde615354"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tipo_incidencia_descripcion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="26" splitType="Stretch">
+			<textField>
+				<reportElement x="227" y="0" width="80" height="20" uuid="34d1c428-8346-4ace-8666-0952063aa069"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="307" y="0" width="40" height="20" uuid="2a17e86d-552c-48cb-9a5a-3cdd71d74cca"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

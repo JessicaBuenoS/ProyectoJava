@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="GraficaAnnio" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2f4a6500-d317-4ef1-92a3-6a6b1b82f1ec">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="inferior" class="java.sql.Timestamp">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="superior" class="java.sql.Timestamp">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select SUM(CASE WHEN id_tipo_incidencia = 1 THEN 1 ELSE 0 END) quejas,
+SUM(CASE WHEN id_tipo_incidencia = 2 THEN 1 ELSE 0 END) sugerencias
+from
+incidencias
+where fecha between $P{inferior} and $P{superior}]]>
+	</queryString>
+	<field name="quejas" class="java.math.BigDecimal"/>
+	<field name="sugerencias" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="215" y="10" width="154" height="25" uuid="3e50b4cf-4f60-495b-acf3-0a7006b73bf1"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<text><![CDATA[Número de incidencias]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="105" y="59" width="100" height="20" uuid="0d452a7a-db2e-4569-b24a-f3af4900d8a3"/>
+				<textFieldExpression><![CDATA[$P{inferior}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="205" y="59" width="100" height="20" uuid="2d7628c5-a742-4442-911e-f87140548b98"/>
+				<textFieldExpression><![CDATA[$P{superior}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="61" y="59" width="44" height="20" uuid="56e6ba92-b885-42b3-8fcb-e58a1823ec43"/>
+				<text><![CDATA[Rango: ]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="186" splitType="Stretch">
+			<elementGroup>
+				<barChart>
+					<chart>
+						<reportElement x="105" y="40" width="359" height="101" uuid="2473ea94-8c33-4283-b950-87fba5c9d3b7"/>
+						<chartTitle/>
+						<chartSubtitle/>
+						<chartLegend/>
+					</chart>
+					<categoryDataset>
+						<categorySeries>
+							<seriesExpression><![CDATA[""]]></seriesExpression>
+							<categoryExpression><![CDATA["Quejas"]]></categoryExpression>
+							<valueExpression><![CDATA[$F{quejas}]]></valueExpression>
+						</categorySeries>
+						<categorySeries>
+							<seriesExpression><![CDATA[""]]></seriesExpression>
+							<categoryExpression><![CDATA["Sugerencias"]]></categoryExpression>
+							<valueExpression><![CDATA[$F{sugerencias}]]></valueExpression>
+						</categorySeries>
+					</categoryDataset>
+					<barPlot>
+						<plot/>
+						<itemLabel/>
+						<categoryAxisFormat>
+							<axisFormat/>
+						</categoryAxisFormat>
+						<valueAxisFormat>
+							<axisFormat/>
+						</valueAxisFormat>
+					</barPlot>
+				</barChart>
+			</elementGroup>
+		</band>
+	</detail>
+</jasperReport>

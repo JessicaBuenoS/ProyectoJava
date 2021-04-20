@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5b626c79-1eb6-4017-a10a-0077c2d87309">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     movimiento_gestor.`id_movimiento` AS movimiento_gestor_id_movimiento,
+     movimiento_gestor.`id_gestor` AS movimiento_gestor_id_gestor,
+     movimiento_gestor.`fecha` AS movimiento_gestor_fecha,
+     tipo_movimiento.`descripcion` AS tipo_movimiento_descripcion,
+     usuarios.`nombre` AS usuarios_nombre
+FROM
+     `movimiento_gestor` movimiento_gestor INNER JOIN `tipo_movimiento` tipo_movimiento ON movimiento_gestor.`id_tipo_movimiento` = tipo_movimiento.`id_tipo_movimiento`
+     INNER JOIN `usuarios` usuarios ON movimiento_gestor.`id_gestor` = usuarios.`id_usuario`]]>
+	</queryString>
+	<field name="movimiento_gestor_id_movimiento" class="java.lang.Integer"/>
+	<field name="movimiento_gestor_id_gestor" class="java.lang.String"/>
+	<field name="movimiento_gestor_fecha" class="java.sql.Timestamp"/>
+	<field name="tipo_movimiento_descripcion" class="java.lang.String"/>
+	<field name="usuarios_nombre" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="210" y="35" width="148" height="20" uuid="b615ff59-78c2-4312-acef-7ee23f0a216f"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Histórico de movimientos]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="455" y="59" width="100" height="20" uuid="f73ea3ad-be9a-4d0d-99de-d2da4628c70c"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="a45fd7f0-e4f8-4c1b-bf8e-0f1d27c5b432"/>
+				<text><![CDATA[Id movimiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="100" height="20" uuid="fd9a0c07-f4ff-4f7c-b520-dd7b3446c476"/>
+				<text><![CDATA[Id gestor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="0" width="155" height="20" uuid="88200ad8-b0e1-43e2-8996-1616245ff189"/>
+				<text><![CDATA[Nombre gestor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="355" y="0" width="100" height="20" uuid="6d67c108-c90e-4e57-83ad-2a8ed097b289"/>
+				<text><![CDATA[Tipo de movimiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="455" y="0" width="100" height="20" uuid="3d81dac7-e444-421a-aa28-cad7bb9899bf"/>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="33" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="b23e702a-620b-44ef-840e-bba74fa7af39"/>
+				<textFieldExpression><![CDATA[$F{movimiento_gestor_id_movimiento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="100" height="20" uuid="13bc0c99-2705-4648-a36b-4458f2b5704a"/>
+				<textFieldExpression><![CDATA[$F{movimiento_gestor_id_gestor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="155" height="20" uuid="81725684-03ce-4d9d-8fbb-3492b69416b3"/>
+				<textFieldExpression><![CDATA[$F{usuarios_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="355" y="0" width="100" height="20" uuid="2f48e0f7-6182-4cd1-a788-485c9c5c91ba"/>
+				<textFieldExpression><![CDATA[$F{tipo_movimiento_descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="0" width="100" height="20" uuid="902fda81-fe1c-49e6-b2f0-0b6ac0305b86"/>
+				<textFieldExpression><![CDATA[$F{movimiento_gestor_fecha}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="192" y="0" width="103" height="20" uuid="e401c0c5-7e06-4ebf-b708-4d3083fc7af0"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="295" y="0" width="40" height="20" uuid="3aae170e-d76e-4adc-a22c-c7f52f8bbdc8"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
